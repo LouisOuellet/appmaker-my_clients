@@ -37,7 +37,7 @@ class my_clientsAPI extends organizationsAPI {
 					"output" => [
 						'headers' => $headers,
 						'raw' => $clients,
-						'results' => $result,
+						'dom' => $result,
 					],
 				];
 			} else {
