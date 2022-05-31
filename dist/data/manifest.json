@@ -1,7 +1,7 @@
 {
     "repository": {
         "name": "appmaker-my_clients",
-        "branch": "dev",
+        "branch": "pre-release",
         "manifest": "\/dist\/data\/manifest.json",
         "host": {
             "git": "https:\/\/github.com\/LouisOuellet\/",
@@ -9,6 +9,6 @@
         }
     },
     "name": "my_clients",
-    "build": 80,
-    "version": "22.05-dev"
+    "build": 81,
+    "version": "22.05-pre-release"
 }
