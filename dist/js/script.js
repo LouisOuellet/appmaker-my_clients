@@ -1,4 +1,4 @@
-API.Plugins.my_clients = {
+Engine.Plugins.my_clients = {
 	element:{
 		modal:{
 			read:{},
@@ -41,23 +41,23 @@ API.Plugins.my_clients = {
 		},
 	},
 	init:function(){
-		API.GUI.Sidebar.Nav.add('my_clients', 'main_navigation');
+		Engine.GUI.Sidebar.Nav.add('my_clients', 'main_navigation');
 	},
 	load:{
 		index:function(){
-			API.Builder.card($('#pagecontent'),{ title: 'my_clients', icon: 'my_clients'}, function(card){
-				API.request('my_clients','read',{data:{}},function(result) {
+			Engine.Builder.card($('#pagecontent'),{ title: 'my_clients', icon: 'my_clients'}, function(card){
+				Engine.request('my_clients','read',{data:{}},function(result) {
 					var dataset = JSON.parse(result);
 					if(dataset.success != undefined){
-						for(const [key, value] of Object.entries(dataset.output.dom)){ API.Helper.set(API.Contents,['data','dom','my_clients',value.name],value); }
-						for(const [key, value] of Object.entries(dataset.output.raw)){ API.Helper.set(API.Contents,['data','raw','my_clients',value.name],value); }
-						API.Builder.table(card.children('.card-body'), dataset.output.dom, {
+						for(const [key, value] of Object.entries(dataset.output.dom)){ Engine.Helper.set(Engine.Contents,['data','dom','my_clients',value.id],value); }
+						for(const [key, value] of Object.entries(dataset.output.raw)){ Engine.Helper.set(Engine.Contents,['data','raw','my_clients',value.id],value); }
+						Engine.Builder.table(card.children('.card-body'), dataset.output.dom, {
 							headers:dataset.output.headers,
 							id:'my_clientsIndex',
 							modal:true,
-							key:'name',
+							key:'id',
 							plugin:"organizations",
-							import:{ key:'name', },
+							import:{ key:'id', },
 							clickable:{ enable:true, plugin:'organizations', view:'details'},
 							set:{status:1,isActive:"true",isClient:"true"},
 							controls:{
@@ -65,7 +65,7 @@ API.Plugins.my_clients = {
 								disable:['create'],
 							}
 						},function(response){
-							API.Plugins.my_clients.element.table.index = response.table;
+							Engine.Plugins.my_clients.element.table.index = response.table;
 						});
 					}
 				});
@@ -75,4 +75,4 @@ API.Plugins.my_clients = {
 	extend:{},
 }
 
-API.Plugins.my_clients.init();
+Engine.Plugins.my_clients.init();
